@@ -1,0 +1,14 @@
+<div class="match">
+	<div class="teampts margin-right"
+		data-ng-show="outcome"
+		data-ng-class="{positive: (-outcome.diff > 0), negative: (-outcome.diff < 0)}">{{ -outcome.diff | pointDiff : 2 }}</div>
+	<div class="teamlogo-sm team1 margin-right {{ match.teams[0].abbreviation }}"></div>
+	<div class="teamname team1" data-ng-hide="outcome">{{ match.teams[0].name }}</div>
+	<div class="v margin-left margin-right" ng-hide="{{ match.status == 'C' }}">v</div>
+	<div class="score margin-left margin-right" ng-show="{{ match.status == 'C' }}">{{ match.scores[0] }} - {{ match.scores[1] }}</div>
+	<div class="teamname team2" data-ng-hide="outcome">{{ match.teams[1].name }}</div>
+	<div class="teamlogo-sm team2 margin-left {{ match.teams[1].abbreviation }}"></div>
+	<div class="teampts margin-left"
+		data-ng-show="outcome"
+		data-ng-class="{positive: (outcome.diff > 0), negative: (outcome.diff < 0)}">{{ outcome.diff | pointDiff : 2 }}</div>
+</div>

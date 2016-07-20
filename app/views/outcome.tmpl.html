@@ -1,0 +1,10 @@
+<div class="row"
+	data-ng-class="{selected: isOutcomeSelected(match, outcome), complete: match.status == 'C'}"
+	data-ng-click="match.status != 'C' && selectOutcome(match, outcome)">
+	<div class="col-md-3 info">
+		<span data-ng-show="outcome.team1 === outcome.team2">Draw</span>
+		<span data-ng-show="outcome.team1 !== outcome.team2 && ((outcome.team1 - outcome.team2) | abs) < 16">15 or less</span>
+		<span data-ng-show="outcome.team1 !== outcome.team2 && ((outcome.team1 - outcome.team2) | abs) > 15">16 or more</span>
+	</div>
+	<match class="col-md-9"></match>
+</div>

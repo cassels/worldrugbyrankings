@@ -1,0 +1,45 @@
+.teamname {
+	font-variant: small-caps
+}
+
+.rankings {
+	.tableWrap{
+		overflow: hidden;
+		height: 602px;
+		@include transition(height 0.5s ease);
+		table {
+			thead tr {
+				th {
+					text-transform: uppercase;
+					font-size: 0.8em;
+					color: $gray-light;
+				}
+			}
+			tbody tr {
+				> td > .pos {
+					min-width: 20px;
+					display:inline-block;
+				}
+				.movement {
+					font-size: 0.65em;
+					display: inline-block;
+					margin: -4px 10px;
+					vertical-align: middle;
+					.up {
+						color: $wr-green;
+					}
+					.down {
+						color: $wr-red;
+					}
+					.pos {
+						font-size: 1.1em;
+						color: $gray-light;
+					}
+				}
+			}
+		}
+	}
+	table.more td {
+		text-align: center;
+	}
+}

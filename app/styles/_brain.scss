@@ -1,0 +1,160 @@
+.autocomplete-wrap {
+	.right-panel {
+		.pos,
+		.info {
+			font-size: 0.8em;
+			color: $gray-light;
+			font-family: monospace;
+		}
+	}
+}
+tags-input .tags .tag-item {
+	background: $wr-blue;
+	font-size: 0.9em;
+    font-variant: small-caps;
+    padding: 1px 10px;
+    border: none;
+
+    &.selected {
+    	border: none;
+    	background: $wr-red;
+    }
+}
+
+tags-input .tags .tag-item .remove-button {
+	color: white;
+	&:active {
+		color: white;
+	}
+}
+
+.brain {
+	h4 {
+		margin-top: 1px;
+	}
+	h6 {
+		color: $wr-blue;
+	}
+	.gc-pagination {
+		text-align: center;
+	}
+	.filterContainer {
+		background: $wr-green;
+		padding: 10px;
+    @include border-top-radius($border-radius-large);
+    @include border-right-radius($border-radius-large);
+    @include border-bottom-radius($border-radius-large);
+    @include border-left-radius($border-radius-large);
+		.fa-inverse {
+			color: $wr-green;
+		}
+		h5 {
+			color: white;
+			margin-top: 0;
+		}
+	}
+	.matchContainer {
+		border: 1px solid $gray-lighter;
+		overflow: hidden;
+    @include border-top-radius($border-radius-large);
+    @include border-right-radius($border-radius-large);
+    @include border-bottom-radius($border-radius-large);
+    @include border-left-radius($border-radius-large);
+		> .row {
+			position: relative;
+			.ko {
+				background-color: $wr-blue;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				h6 {
+					color: white;
+					font-weight: normal;
+					position: absolute;
+					top: 0;
+					right: 15px;
+					left: 15px;
+					bottom: 0;
+					margin: auto;
+					height: 24px;
+					line-height: 24px;
+				}
+			}
+			.deets {
+				text-align: center;
+				padding: 10px 0;
+				.info {
+					font-size: 0.7em;
+					color: $gray-light;
+				}
+				.match {
+					margin-top: 5px;
+				}
+			}
+		}
+		.none .row {
+			background: $gray-lighter;
+			border-top: 1px solid transparent;
+			font-size: 0.8em;
+			padding: 15px 10px;
+		}
+		.outcome {
+			.row {
+				cursor: pointer;
+				background: $gray-lighter;
+				border-top: 1px solid transparent;
+				&:focus {
+					outline: none;
+				}
+				&:hover,
+				&.selected {
+					background: white;
+					border-top-color: $gray-lighter;
+				}
+				&.complete {
+					cursor: not-allowed;
+				}
+				.match {
+					text-align: center;
+					padding: 10px 0;
+				}
+				.info {
+					padding: 15px 10px;
+					span {
+						font-size: 0.8em;
+						color: $gray-light;
+					}
+				}
+			}
+		}
+	}
+
+	.match {
+		div {
+			float: none;
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.teampts {
+			font-size: 0.7em;
+		    font-family: monospace;
+		    &.positive {
+		    	color: $wr-green
+		    }
+		    &.negative {
+		    	color: $wr-red;
+		    }
+		}
+	}
+	.team1wins {
+		.team2 {
+			@include filter(opacity(20%));
+		}
+	}
+	.team2wins {
+		.team1 {
+			@include filter(opacity(20%));
+		}
+	}
+}

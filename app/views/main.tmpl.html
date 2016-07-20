@@ -1,0 +1,143 @@
+<div class="row">
+  <h4 class="col-xs-13">
+    World Rugby Rankings - Calculator
+  </h4>
+</div>
+<div class="row">
+  <div class="col-md-6 rankings">
+    <div class="text-center">
+      <button class="btn btn-link" ng-click="resetOutcomes()">
+        <i class="fa fa-rotate-left" title="Align Left"></i> Reset
+      </button>
+    </div>
+    <growtable class="rankings">
+      <table class="table table-striped">
+    		<thead>
+    			<tr>
+    				<th class="col-md-3">#</th>
+    				<th>Teams</th>
+    				<th>Points</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr data-ng-repeat="entry in rankings | orderBy: '-pts'">
+    				<td>
+    					<div class="pos">{{$index+1}}</div>
+    					<div class="movement">
+    						<span class="fa-stack fa-lg up"
+    							data-ng-show="entry.pos > ($index+1)">
+    							<i class="fa fa-circle fa-stack-2x"></i>
+    							<i class="fa fa-inverse fa-arrow-up fa-stack-1x"></i>
+    						</span>
+    						<span class="fa-stack fa-lg down"
+    							data-ng-show="entry.pos < ($index+1)">
+    							<i class="fa fa-circle fa-stack-2x"></i>
+    							<i class="fa fa-inverse fa-arrow-down fa-stack-1x"></i>
+    						</span>
+    						<span class="pos" data-ng-show="entry.pos != ($index+1)">({{entry.pos}})</span>
+    					</div>
+    				</td>
+    				<td>
+    					<ul class="list-unstyled">
+    						<li class="teamlogo-sm margin-right {{entry.team.abbreviation}}"></li>
+    						<li class="teamname">{{entry.team.name}}</li>
+    					</ul>
+    				</td>
+    				<td>{{entry.pts | number: 2}}</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    </growtable>
+  </div>
+  <div class="col-md-6 brain">
+    <div class="filterContainer">
+    	<h5>
+    		<span class="fa-stack">
+    			<i class="fa fa-circle fa-stack-2x"></i>
+    			<i class="fa fa-inverse fa-filter fa-stack-1x"></i>
+    		</span>
+    		Filter
+    	</h5>
+    	<div>
+    		<tags-input
+    			ng-model="tags"
+    			placeholder="Team, Championship"
+    			replace-spaces-with-dashes="false"
+    			add-from-autocomplete-only="true"
+    			display-property="_autocompleteName">
+    			<auto-complete
+    				source="loadTags($query)"
+    				min-length="0"
+    				debounce-delay="0"
+            template="my-custom-template"></auto-complete>
+    		</tags-input>
+    		<script type="text/ng-template" id="my-custom-template">
+    			<div class="autocomplete-wrap">
+    				<div class="left-panel">
+    					<div class="teamlogo-md margin-right {{ data.team.abbreviation }}"></div>
+    				</div>
+    				<div class="right-panel">
+    					<div class="teamname team1" data-ng-hide="outcome" ng-bind-html="$highlight($getDisplayText())"></div>
+    					<div class="info">{{data.pts | number: 2}}</div>
+    				</div>
+    			</div>
+    		</script>
+    	</div>
+    </div>
+    <div class="">
+      <h5>Upcoming Games</h5>
+    	<div>
+    		<div class="gc-pagination" data-ng-show="filtered.length / page.size > 1">
+          <uib-pagination
+          ng-model="page.index"
+          total-items="filtered.length"
+          max-size="5"
+          min-size="5"
+          items-per-page="page.size"
+          boundary-links="true"
+          first-text="&lt;&lt;"
+          previous-text="&lt;"
+          last-text="&gt;&gt;"
+          next-text="&gt;">
+        </uib-pagination>
+    		</div>
+    		<div class="clearfix" data-ng-repeat="(key, games) in filtered = ( games | pick: isIncluded ) | startFrom: (page.index-1) * page.size | limitTo: page.size | groupBy: 'time.day' track by key">
+    		<!--<div class="clearfix" data-ng-repeat="match in games | pick: isIncluded track by match.matchId">-->
+
+    			<h6>{{ key | date: "EEE, MMM d, y" }}</h6>
+    			<div data-ng-repeat="match in games track by match.matchId" class="matchContainer col-md-12 margin-bottom">
+    			<!--<div class="matchContainer col-md-12 margin-bottom">-->
+    				<div class="row">
+    					<div class="ko col-md-3"><h6>Kick off: {{ match.time.millis | date : "HH:mm" }}</h6></div>
+    					<div class="deets col-md-9 col-md-push-3">
+    						<div class="info" data-ng-repeat="event in match.events">{{event.label}}</div>
+    						<match></match>
+    						<div class="info" ng-show="{{ match.venue }}">{{ match.venue.name }}, {{ match.venue.city }}</div>
+    					</div>
+    				</div>
+    				<div class="outcome" ng-show="match._outcomes.length > 0">
+    					<outcome data-ng-repeat="outcome in match._outcomes" data-ng-class="{team1wins: outcome.team1 > outcome.team2, team2wins: outcome.team1 < outcome.team2}"></outcome>
+    				</div>
+    				<div class="none text-center" ng-hide="match._outcomes.length > 0">
+    					<div class="row">No points can be awarded from this game.</div>
+    				</div>
+    			</div>
+    		</div>
+    		<div class="gc-pagination" data-ng-show="filtered.length / page.size > 1">
+    			<uib-pagination
+    				ng-model="page.index"
+    				total-items="filtered.length"
+    				max-size="5"
+    				min-size="5"
+    				items-per-page="page.size"
+    				boundary-links="true"
+    				first-text="&lt;&lt;"
+    				previous-text="&lt;"
+    				last-text="&gt;&gt;"
+    				next-text="&gt;">
+    			</uib-pagination>
+    		</div>
+    	</div>
+    </div>
+  </div>
+</div>
