@@ -1,12 +1,12 @@
 <div class="row">
-  <h4 class="col-xs-13">
+  <h4 class="col-xs-12 title">
     World Rugby Rankings - Calculator
   </h4>
 </div>
 <div class="row">
   <div class="col-md-6 rankings">
     <div class="text-center">
-      <button class="btn btn-link" ng-click="resetOutcomes()">
+      <button class="btn btn-link no-focus" ng-click="resetOutcomes()">
         <i class="fa fa-rotate-left" title="Align Left"></i> Reset
       </button>
     </div>
@@ -14,7 +14,7 @@
       <table class="table table-striped">
     		<thead>
     			<tr>
-    				<th class="col-md-3">#</th>
+    				<th class="col-xs-3">#</th>
     				<th>Teams</th>
     				<th>Points</th>
     			</tr>
@@ -105,11 +105,14 @@
     		<!--<div class="clearfix" data-ng-repeat="match in games | pick: isIncluded track by match.matchId">-->
 
     			<h6>{{ key | date: "EEE, MMM d, y" }}</h6>
-    			<div data-ng-repeat="match in games track by match.matchId" class="matchContainer col-md-12 margin-bottom">
-    			<!--<div class="matchContainer col-md-12 margin-bottom">-->
+    			<div data-ng-repeat="match in games track by match.matchId" class="matchContainer col-xs-12 margin-bottom">
+    			<!--<div class="matchContainer col-xs-12 margin-bottom">-->
     				<div class="row">
-    					<div class="ko col-md-3"><h6>Kick off: {{ match.time.millis | date : "HH:mm" }}</h6></div>
-    					<div class="deets col-md-9 col-md-push-3">
+    					<div class="ko col-xs-3">
+                <h6 class="hidden-xs">Kick off: {{ match.time.millis | date : "HH:mm" }}</h6>
+                <h6 class="visible-xs">KO: {{ match.time.millis | date : "HH:mm" }}</h6>
+              </div>
+    					<div class="deets col-xs-9 col-xs-push-3">
     						<div class="info" data-ng-repeat="event in match.events">{{event.label}}</div>
     						<match></match>
     						<div class="info" ng-show="{{ match.venue }}">{{ match.venue.name }}, {{ match.venue.city }}</div>

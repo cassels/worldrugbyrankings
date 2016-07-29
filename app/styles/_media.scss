@@ -1,0 +1,16 @@
+@media (max-width: 768px) {
+  .ko > h6 {
+    font-size: 11px;
+  }
+  .title {
+    font-size: 16px;
+  }
+  .pagination > li > a, .pagination > li > span {
+    font-size: 12px;
+    padding: 6px 11px;
+  }
+  .rankings .tableWrap table tbody tr .movement {
+    font-size: 0.55em;
+    margin: 0;
+  }
+}

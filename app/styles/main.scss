@@ -11,12 +11,18 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "_rankings";
 @import "_brain";
 @import "_helpers";
+@import "_media";
 
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
+}
+
+.no-focus,
+.no-focus:focus {
+  outline: none;
 }
 
 body {

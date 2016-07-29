@@ -14,8 +14,8 @@ table .teamlogo-sm {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
     .teamlogo-sm {
-        background-image: url("http://dynamic.pulselive.com/dynamic/client/irb/static/css/../i/sprites/tLogoSmall@x2.png");
-        background-size: 19px 3535px
+        background-image: url("/images/tLogoSmall@x2.png");
+        background-size: 19px 3566px;
     }
 }
 
@@ -516,8 +516,8 @@ table .teamlogo-sm {
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
     .teamlogo-md {
-        background-image: url("../i/sprites/teamlogo-md@x2.png");
-        background-size: 27px 4876px
+        background-image: url("/images/tLogo@x2.png");
+        background-size: 27px 5130px;
     }
 }
 
@@ -1011,14 +1011,13 @@ table .teamlogo-sm {
     width: 50px;
     height: 65px;
     background-position: 0 0;
-    /*background-image: url("http://dynamic.pulselive.com/dynamic/client/irb/static/css/../i/sprites/tLogo50.png")*/
     background-image: url("/images/tLogo50.png")
 }
 
 @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
     .teamlogo-lg {
-        background-image: url("../i/sprites/teamlogo-lg@x2.png");
-        background-size: 50px 8537px
+        background-image: url("/images/tLogo50@x2.png");
+        background-size: 50px 8615px;
     }
 }
 

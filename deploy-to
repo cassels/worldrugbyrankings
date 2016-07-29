@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ $# -eq 2 ]; then
+  ssh $1 "rm -rf $2 && mkdir $2"
+  tar -zcvf dist.tar.gz dist
+  scp dist.tar.gz $1:$2
+  ssh $1 "cd $2 && tar -zxvf dist.tar.gz && rm dist.tar.gz && cp -r dist/* ./ && rm -rf dist && chmod 655 images/*  && echo 'success'"
+  rm dist.tar.gz
+  echo 'done'
+else
+  echo 'Please supply a destination address (e.g. root@127.0.0.1) and a destination folder'
+fi

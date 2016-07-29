@@ -128,7 +128,7 @@ angular.module('wrWebApp')
     var loadGames = function(page) {
       var sDate = $filter('date')(getStartDate(), 'yyyy-MM-dd');
       var eDate = $filter('date')(getEndDate(), 'yyyy-MM-dd');
-      return $http.get('http://cmsapi.pulselive.com/rugby/match?' +
+      return $http.get('https://cmsapi.pulselive.com/rugby/match?' +
         'sports=mru' +
         '&page=' + page +
         '&startDate=' + sDate +
@@ -147,8 +147,8 @@ angular.module('wrWebApp')
     var load = function() {
       var thisYear = $filter('date')(new Date(), 'yyyy-MM-dd');
       return $q.all([
-        $http.get('http://cmsapi.pulselive.com/rugby/rankings/mru'),
-        $http.get('http://cmsapi.pulselive.com/rugby/event?startDate=' + thisYear + '&pageSize=200'),
+        $http.get('https://cmsapi.pulselive.com/rugby/rankings/mru'),
+        $http.get('https://cmsapi.pulselive.com/rugby/event?startDate=' + thisYear + '&pageSize=200'),
       ]).then(function(responses){
         original = responses[0].data.entries;
         rankings = angular.copy(original);
